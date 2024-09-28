@@ -12,7 +12,7 @@ export default function SubmitButton({ type, label }: SubmitButtonProps) {
 		<div className='p-1'>
 			<button
 				type={type}
-				className='px-8 py-3 border border-white rounded-lg bg-yellow-600'>
+				className='px-8 py-3 rounded-lg bg-yellow-600'>
 				{label}
 			</button>
 		</div>

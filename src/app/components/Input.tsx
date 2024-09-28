@@ -20,19 +20,14 @@ export default function Input({
 	value = '',
 }: InputProps) {
 	return (
-		<div className='flex flex-col w-full p-2'>
-			<label
-				htmlFor={id}
-				className=''>
-				{id}
-			</label>
-			<div className='p-1 w-full rounded-lg bg-yellow-500'>
+		<div className='bg-[#C4C0B5] p-1 rounded-lg'>
+			<div className='p-1 w-full rounded-lg h-[75px] flex items-center justify-center'>
 				<input
 					type={type}
 					id={id}
 					name={id}
 					required={required}
-					className='text-black p-2 rounded-lg w-full'
+					className='text-black p-2 rounded-lg w-full h-full'
 					placeholder={placeholder}
 					onChange={onChange}
 					value={value}

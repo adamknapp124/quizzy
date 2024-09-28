@@ -1,7 +1,8 @@
 import React from 'react';
 import { getQuizByTitle } from '@/app/actions/getQuizByTitle';
 
-import QuestionForm from './QuestionForm';
+import Header from '@/app/components/Header';
+import QuestionForm from './components/QuestionForm';
 
 interface Questions {
 	question: string;
@@ -20,6 +21,7 @@ export default async function page({
 	};
 }) {
 	const questions = (await getQuizByTitle(params.quiz)) as Questions[];
+	const title = params.quiz.replace(/-/g, ' ');
 
 	const questionArray = questions.map((question) => {
 		return {
@@ -30,13 +32,12 @@ export default async function page({
 	});
 
 	return (
-		<div className='flex flex-col border border-white w-full items-center justify-center'>
-			<div className='capitalize font-header text-3xl my-4'>
-				{params.quiz.replace(/-/g, ' ')}
-			</div>
-			<div>
-				<QuestionForm questions={questionArray} />
-			</div>
+		<div className='flex flex-col w-full items-center justify-center text-black'>
+			<Header title={title} />
+			<QuestionForm
+				questions={questionArray}
+				title={title}
+			/>
 		</div>
 	);
 }

@@ -1,7 +1,10 @@
 import React from 'react';
 import getQuizzes from '@/app/actions/getQuizzes';
 
-import Navlink from '../components/sidebar/Navlink';
+import Header from '@/app/components/Header';
+import QuizSelector from '@/app/quizzes/components/QuizSelector';
+import MobileNav from '../components/MobileNav';
+import CustomButton from '../components/CustomButton';
 
 interface Quiz {
 	question: string;
@@ -14,38 +17,21 @@ interface Quiz {
 export default async function Page() {
 	const quizzes = (await getQuizzes()) as Quiz[];
 
-	// Function to get unique quiz titles
-	function getUniqueQuizTitles(quizList: Quiz[]) {
-		const seen: { [key: string]: boolean } = {};
-		return quizList.filter((quiz) => {
-			if (seen[quiz.title]) {
-				return false;
-			} else {
-				seen[quiz.title] = true;
-				return true;
-			}
-		});
-	}
-
-	const uniqueQuizzes = getUniqueQuizTitles(quizzes);
-
 	return (
-		<div className='flex flex-col m-auto'>
-			<div className='m-auto font-bold text-5xl font-header my-4'>Quizzes</div>
-			<div className=' font-body font-bold bg-sky-950 p-5 rounded-lg flex flex-col gap-4'>
-				{uniqueQuizzes.map((quiz: Quiz, index: number) => (
-					<div
-						className='bg-yellow-600 flex flex-col text-black tracking-wide rounded-lg
-                     hover:text-white hover:bg-black duration-200 transition ease-in overflow-hidden'>
-						<Navlink
-							key={index}
-							name={quiz.title}
-							href={`/quizzes/${quiz.title
-								.replace(/\s+/g, '-')
-								.toLowerCase()}`}
-						/>
-					</div>
-				))}
+		<div className='flex flex-col w-full md:items-center h-screen md:max-h-[1024px] md:p-2'>
+			<Header title='Quizzes' />
+			<div className='font-quiz text-black font-bold cursor-default text-xl md:text-3xl text-center my-2 hidden md:block'>
+				Choose a quiz or create a new one
+			</div>
+			<div className='font-quiz text-black font-bold cursor-default text-xl md:text-3xl text-center my-2 block md:hidden'>
+				Select a quiz
+			</div>
+			<hr className='bg-black h-1 block md:hidden' />
+
+			<QuizSelector quizzes={quizzes} />
+			<hr className='bg-black h-1 block md:hidden' />
+			<div className='flex md:hidden w-full'>
+				<MobileNav />
 			</div>
 		</div>
 	);

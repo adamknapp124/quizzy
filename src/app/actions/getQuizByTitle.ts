@@ -1,6 +1,6 @@
 'use server';
 
-import connection from '@/app/libs/db';
+import pool from '@/app/libs/dbPool';
 
 interface Quiz {
 	title: string;
@@ -12,7 +12,7 @@ interface Quiz {
 export async function getQuizByTitle(title: string): Promise<Quiz[]> {
 	const formattedTitle = title.replace(/-/g, ' ');
 	const query = new Promise<Quiz[]>((resolve, reject) => {
-		connection.query(
+		pool.query(
 			'SELECT * FROM quizzes WHERE title = ?',
 			[formattedTitle],
 			(err, results) => {

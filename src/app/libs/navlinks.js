@@ -1,23 +1,39 @@
+import home from '@/public/icons/home-icon.svg';
+import quiz from '@/public/icons/quiz-icon.svg';
+import create from '@/public/icons/create-icon.svg';
+import account from '@/public/icons/account-icon.svg';
+
 const navlinks = [
 	{
 		name: 'Home',
 		href: '/',
+		icon: home,
 	},
 	{
 		name: 'Quizzes',
 		href: '/quizzes',
+		icon: quiz,
 	},
 	{
 		name: 'Create',
 		href: '/create',
+		icon: create,
 	},
 	{
-		name: 'Grades',
-		href: '/grades',
+		name: 'Account',
+		href: '/account',
+		icon: account,
+	},
+];
+
+const userLinks = [
+	{
+		name: 'Logout',
+		href: '/signout',
 	},
 	{
-		name: 'Edit',
-		href: '/edit',
+		name: 'Account',
+		href: '/account',
 	},
 ];
 

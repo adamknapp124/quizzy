@@ -9,12 +9,16 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				background: 'var(--background)',
 				foreground: 'var(--foreground)',
+				navBackground: '#3C3838',
+				background: '#F6EFE5',
+				hover: '#271D20',
+				border: '#774C3A',
 			},
 			fontFamily: {
 				header: ['Permanent Marker'],
-				body: ['SUSE'],
+				navbar: ['Rock Salt'],
+				quiz: ['Julius Sans One'],
 			},
 		},
 	},

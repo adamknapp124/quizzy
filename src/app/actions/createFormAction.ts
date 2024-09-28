@@ -23,17 +23,19 @@ export async function createFormAction(formData: FormData) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${process.env.OPEN_AI_KEY}`, // Replace with your actual API key
+				Authorization: `Bearer ${process.env.OPEN_AI_KEY}`,
 			},
 			body: JSON.stringify({
 				model: 'gpt-4',
 				messages: [
 					{
 						role: 'system',
-						content: `All you do is generate 3 answers to each given question. Make sure they are close enough to 
-                                    be a possible correct answer, but not close enough to where they will be confused with the correct 
-                                    answer often. I want answers to be as short as possible. I don't want any commentary about the answer 
-                                    or explanations, just the answer. No more, no less. Return your answers as a JSON array.`,
+						content: `You have two roles. The first is to give 3 wrong answers to the question that is presented. Make sure they are close enough to 
+                                    be a possible correct answer, but not close enough to where they will be confused with the correct answer often. I want answers
+                                    to be as short as possible. I don't want any commentary about the answer or explanations, just the answer. No more, no less.
+                                    Return your answers as a JSON array. The second is to provide a question as well as a group of answers, one of which is correct.
+                                    The question and answers should be around the same education level as the question asked previously. Always make the first answer
+                                    the correct answer, and the last answer, the wrong one. Don't provide any answers that are identical to the given correct answer.`,
 					},
 					{
 						role: 'user',
