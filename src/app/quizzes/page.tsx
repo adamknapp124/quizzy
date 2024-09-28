@@ -18,7 +18,7 @@ export default async function Page() {
 	const quizzes = (await getQuizzes()) as Quiz[];
 
 	return (
-		<div className='flex flex-col w-full md:items-center h-screen md:max-h-[1024px] md:p-2'>
+		<div className='flex flex-col justify-between w-full md:items-center h-screen md:max-h-[1024px]'>
 			<Header title='Quizzes' />
 			<div className='font-quiz text-black font-bold cursor-default text-xl md:text-3xl text-center my-2 hidden md:block'>
 				Choose a quiz or create a new one
@@ -27,7 +27,6 @@ export default async function Page() {
 				Select a quiz
 			</div>
 			<hr className='bg-black h-1 block md:hidden' />
-
 			<QuizSelector quizzes={quizzes} />
 			<hr className='bg-black h-1 block md:hidden' />
 			<div className='flex md:hidden w-full'>

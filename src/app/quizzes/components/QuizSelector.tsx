@@ -21,16 +21,6 @@ export default function QuizSelector({ quizzes }: { quizzes: Quiz[] }) {
 					<QuizLinks quizzes={quizzes} />
 				</div>
 			</div>
-			<div className='gap-2 hidden md:flex w-4/5 m-auto py-2 max-w-[900px]'>
-				<CustomButton
-					name='+ Create Quiz'
-					classes='bg-white border-2 border-border text-black font-bold hover:bg-border hover:text-white'
-				/>
-				<CustomButton
-					name='Begin Quiz'
-					classes='bg-white border-2 border-border text-black font-bold hover:bg-border hover:text-white'
-				/>
-			</div>
 		</>
 	);
 }

@@ -15,7 +15,6 @@ import { getAuth } from 'firebase/auth';
 const app = initializeApp(firebaseConfig);
 
 if (typeof window !== 'undefined') {
-	// Ensure that the environment is the browser
 	try {
 		const analytics = getAnalytics(app);
 	} catch (error) {

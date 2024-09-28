@@ -55,68 +55,70 @@ export default function CreateForm() {
 	useEffect(() => {}, [extraQuestions]);
 
 	return (
-		<div className='h-full w-full px-2'>
-			<form
-				onSubmit={handleSubmit}
-				className='w-full p-2 m-auto font-body font-bold rounded-lg h-full flex flex-col gap-2 font-quiz'>
-				<Input
-					id='Title'
-					type='text'
-					required={true}
-					placeholder='Name the quiz'
-					value={formValues.Title}
-					onChange={handleChange}
-					disabled={extraQuestions > 0}
-				/>
-
-				<Input
-					id='Subject'
-					type='text'
-					required={true}
-					placeholder='What class is this for?'
-					value={formValues.Subject}
-					onChange={handleChange}
-					disabled={extraQuestions > 0}
-				/>
-
-				<Input
-					id='Question'
-					type='text'
-					required={true}
-					placeholder='Write your quiz question here'
-					value={formValues.Question}
-					onChange={handleChange}
-				/>
-
-				<Input
-					id='Answer'
-					type='text'
-					required={true}
-					placeholder="What's the correct answer?"
-					value={formValues.Answer}
-					onChange={handleChange}
-				/>
-
-				<hr className='m-2' />
-
-				<div className='flex flex-col justify-between p-2 gap-2'>
-					<CustomButton
-						classes='px-8 py-3 rounded-lg bg-white border border-navBackground text-black flex items-center justify-center text-xl'
-						onClick={handleReset}
-						name='Reset'
-						type='reset'
+		<div className='w-full h-screen m-auto items-center justify-between flex flex-col gap-2 max-w-[1100px]'>
+			<div className='h-full w-full px-2'>
+				<form
+					onSubmit={handleSubmit}
+					className='w-full p-2 m-auto font-body font-bold rounded-lg h-full flex flex-col gap-2 font-quiz'>
+					<Input
+						id='Title'
+						type='text'
+						required={true}
+						placeholder='Name the quiz'
+						value={formValues.Title}
+						onChange={handleChange}
+						disabled={extraQuestions > 0}
 					/>
-					<CustomButton
-						name={
-							extraQuestions === 0
-								? 'Create'
-								: 'Add Question to Current Quiz'
-						}
-						type='submit'
-						classes='bg-navBackground text-white font-extrabold text-xl'
+
+					<Input
+						id='Subject'
+						type='text'
+						required={true}
+						placeholder='What class is this for?'
+						value={formValues.Subject}
+						onChange={handleChange}
+						disabled={extraQuestions > 0}
 					/>
-				</div>
-			</form>
+
+					<Input
+						id='Question'
+						type='text'
+						required={true}
+						placeholder='Write your quiz question here'
+						value={formValues.Question}
+						onChange={handleChange}
+					/>
+
+					<Input
+						id='Answer'
+						type='text'
+						required={true}
+						placeholder="What's the correct answer?"
+						value={formValues.Answer}
+						onChange={handleChange}
+					/>
+
+					<hr className='m-2' />
+
+					<div className='flex flex-col justify-between p-2 gap-2'>
+						<CustomButton
+							classes='px-8 py-3 rounded-lg bg-white border border-navBackground text-black flex items-center justify-center text-xl'
+							onClick={handleReset}
+							name='Reset'
+							type='reset'
+						/>
+						<CustomButton
+							name={
+								extraQuestions === 0
+									? 'Create'
+									: 'Add Question to Current Quiz'
+							}
+							type='submit'
+							classes='bg-navBackground text-white font-extrabold text-xl'
+						/>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
