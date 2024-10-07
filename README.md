@@ -1,5 +1,5 @@
 # Quizzy - the AI powered self testing application
-Quizzy is a web application designed to help users create, customize, and take quizzes on a variety of topics. Users can easily build interactive quizzes by adding questions, setting answer choices, and determining correct answers. The application supports quiz-takers with real-time feedback and scoring, making it a useful tool for educators, students, or anyone looking to test their knowledge. It can also serve as a platform for creating study aids or engaging in fun trivia challenges with friends.
+Quizzy is a web application designed to help users create, customize, and take quizzes on any topic. Users can easily build interactive quizzes by adding questions, setting the correct answer, then AI will take care of the rest. The application supports quiz-takers with real-time feedback and scoring, making it a useful tool for educators, students, or anyone looking to test their knowledge. It can also serve as a platform for creating study aids or engaging in fun trivia challenges with friends.
 
 ## Features
 ### Create Custom Quizzes
