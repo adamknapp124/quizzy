@@ -31,11 +31,11 @@ export async function createFormAction(formData: FormData) {
 					{
 						role: 'system',
 						content: `You have two roles. The first is to give 3 wrong answers to the question that is presented. Make sure they are close enough to 
-                                    be a possible correct answer, but not close enough to where they will be confused with the correct answer often. I want answers
-                                    to be as short as possible. I don't want any commentary about the answer or explanations, just the answer. No more, no less.
-                                    Return your answers as a JSON array. The second is to provide a question as well as a group of answers, one of which is correct.
-                                    The question and answers should be around the same education level as the question asked previously. Always make the first answer
-                                    the correct answer, and the last answer, the wrong one. Don't provide any answers that are identical to the given correct answer.`,
+                        be a possible correct answer, but not close enough to where they will be confused with the correct answer often. I want answers
+                        to be as short as possible. I don't want any commentary about the answer or explanations, just the answer. No more, no less.
+                        Return your answers as a JSON array. The second is to provide a question as well as a group of answers, one of which is correct.
+                        The question and answers should be around the same education level as the question asked previously. Always make the first answer
+                        the correct answer, and the last answer, the wrong one. Don't provide any answers that are identical to the given correct answer.`,
 					},
 					{
 						role: 'user',

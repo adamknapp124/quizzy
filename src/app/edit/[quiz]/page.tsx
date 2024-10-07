@@ -23,10 +23,6 @@ export default async function page({
 	const questions = (await getQuizByTitle(params.quiz)) as Questions[];
 	const title = params.quiz.replace(/-/g, ' ');
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log('value changed');
-	};
-
 	const questionArray = questions.map((question) => {
 		return {
 			question: question.question,
@@ -35,23 +31,11 @@ export default async function page({
 		};
 	});
 
-	console.log('edit questionArray: ', questionArray);
-
 	return (
 		<div className='flex flex-col w-full items-center justify-center bg-[#203050] text-black'>
 			<div className='bg-white p-3 rounded-lg'>
 				{questionArray.map((question, index) => (
 					<div key={index}>
-						{/* <Input
-							id='Title'
-							type='text'
-							required={true}
-							placeholder='Name the quiz'
-							value={question.question}
-							onChange={handleChange}
-							// onChange={handleChange}
-							// disabled={extraQuestions > 0}
-						/> */}
 						<EditForm questionArray={questionArray} />
 						<div>{question.question}</div>
 						<div>{question.answer}</div>

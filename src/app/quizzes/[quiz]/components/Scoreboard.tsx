@@ -2,6 +2,8 @@ import React from 'react';
 
 import { submitScoreAction } from '@/app/actions/submitScoreAction';
 
+import SubmitButton from '@/app/components/buttons/SubmitButton';
+
 interface scoredataProps {
 	score: number;
 	quiz: string;
@@ -11,6 +13,7 @@ interface scoredataProps {
 export default function Scoreboard({ score, quiz, user }: scoredataProps) {
 	const handleScoreSubmit = async () => {
 		await submitScoreAction(score, quiz, user);
+		window.alert('Score submitted!');
 	};
 	const handleBackToQuizzes = () => {
 		window.history.back();
@@ -20,26 +23,36 @@ export default function Scoreboard({ score, quiz, user }: scoredataProps) {
 	};
 
 	return (
-		<div>
-			<div>Thank you for playing</div>
-			<div className='py-5 px-10 my-2 text-8xl'>{score} correct!</div>
+		<div className='flex flex-col w-full'>
+			<div className='font-quiz text-center text-lg font-bold w-full m-auto'>
+				Thank you for playing
+			</div>
+			<div className='py-5 px-10 my-2 text-4xl font-quiz font-bold text-center'>
+				{score} correct!
+			</div>
 			<div className='flex flex-col gap-2'>
-				<button
-					className='w-full py-3 bg-yellow-600 text-white rounded-lg font-bold tracking-wide text-xl hover:bg-slate-900'
-					onClick={handleScoreSubmit}>
-					Submit Score
-				</button>
+				<SubmitButton
+					classes='bg-white border-2 border-sky-300 text-black font-bold 
+                    hover:bg-sky-600 hover:text-white transition duration-200 text-xl'
+					onClick={handleScoreSubmit}
+					type='button'
+					name='Submit Score'
+				/>
 				<div className='flex gap-2'>
-					<button
-						className='w-full py-3 bg-yellow-600 text-white rounded-lg font-bold tracking-wide text-xl hover:bg-slate-900'
-						onClick={handleBackToQuizzes}>
-						To Quiz Selection
-					</button>
-					<button
-						className='w-full py-3 bg-yellow-600 text-white rounded-lg font-bold tracking-wide text-xl hover:bg-slate-900'
-						onClick={handleTryAgain}>
-						Try Again
-					</button>
+					<SubmitButton
+						classes='bg-white border-2 border-sky-300 text-black font-bold 
+                    hover:bg-sky-600 hover:text-white transition duration-200 text-xl'
+						onClick={handleBackToQuizzes}
+						name='To Quiz Selection'
+						type='button'
+					/>
+					<SubmitButton
+						classes='bg-white border-2 border-sky-300 text-black font-bold 
+                    hover:bg-sky-600 hover:text-white transition duration-200 text-xl'
+						onClick={handleTryAgain}
+						name='Try Again'
+						type='button'
+					/>
 				</div>
 			</div>
 		</div>

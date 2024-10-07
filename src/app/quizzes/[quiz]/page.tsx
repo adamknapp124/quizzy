@@ -3,6 +3,7 @@ import { getQuizByTitle } from '@/app/actions/getQuizByTitle';
 
 import Header from '@/app/components/Header';
 import QuestionForm from './components/QuestionForm';
+import MobileNav from '@/app/components/MobileNav';
 
 interface Questions {
 	question: string;
@@ -32,12 +33,15 @@ export default async function page({
 	});
 
 	return (
-		<div className='flex flex-col w-full items-center justify-center text-black'>
+		<div className='flex flex-col justify-between m-auto w-full max-w-[1100px] h-screen'>
 			<Header title={title} />
-			<QuestionForm
-				questions={questionArray}
-				title={title}
-			/>
+			<div className='flex flex-col w-full items-center justify-between text-black h-screen px-2'>
+				<QuestionForm
+					questions={questionArray}
+					title={title}
+				/>
+			</div>
+			<MobileNav />
 		</div>
 	);
 }

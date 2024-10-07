@@ -1,5 +1,7 @@
 import React from 'react';
 
+import clsx from 'clsx';
+
 interface InputProps {
 	id: string;
 	type: string;
@@ -8,11 +10,13 @@ interface InputProps {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	value?: string;
 	disabled?: boolean;
+	classes?: string;
 }
 
 export default function Input({
 	id,
 	type,
+	classes,
 	required,
 	placeholder,
 	onChange,
@@ -20,7 +24,7 @@ export default function Input({
 	value = '',
 }: InputProps) {
 	return (
-		<div className='bg-[#C4C0B5] p-1 rounded-lg'>
+		<div className={clsx(`bg-shadow p-1 rounded-lg`, classes)}>
 			<div className='p-1 w-full rounded-lg h-[75px] flex items-center justify-center'>
 				<input
 					type={type}

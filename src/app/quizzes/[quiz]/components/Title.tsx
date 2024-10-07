@@ -5,5 +5,5 @@ interface TitleProps {
 }
 
 export default function Title({ title }: TitleProps) {
-	return <div className='font-body capitalize font-bold text-xl'>{title}</div>;
+	return <div className='font-body capitalize font-bold text-lg'>{title}</div>;
 }
