@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+import { AuthProvider } from '@/app/AuthContext';
+
 import Sidebar from '@/app/components/sidebar/Sidebar';
 
 export const metadata: Metadata = {
@@ -15,10 +17,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className='flex'>
-				<Sidebar />
-				{children}
-			</body>
+			<AuthProvider>
+				<body className='flex'>
+					<Sidebar />
+					{children}
+				</body>
+			</AuthProvider>
 		</html>
 	);
 }

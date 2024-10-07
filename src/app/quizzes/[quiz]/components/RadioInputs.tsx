@@ -1,5 +1,7 @@
 'use client';
 
+import clsx from 'clsx';
+
 import React, { useState, useEffect } from 'react';
 
 interface RadioInputsProps {
@@ -56,8 +58,16 @@ export default function RadioInputs({
 				{shuffledAnswers.map((answer, index) => (
 					<div
 						key={index}
-						className='flex gap-2 w-[200px] justify-center w-full border border-black py-2 rounded-lg 
-                        hover:bg-navBackground hover:text-white cursor-pointer font-quiz font-bold tracking-wide'
+						className={clsx(
+							`px-2 flex gap-2 w-[200px] justify-center items-center 
+                        w-full border border-black hover:border-sky-300 py-2 rounded-lg 
+                        hover:bg-sky-600 hover:text-white cursor-pointer font-quiz font-bold 
+                        tracking-wide transition duration-300`,
+							{
+								'bg-sky-600 text-white border-sky-300':
+									selectedAnswer === answer,
+							}
+						)}
 						onClick={handleClick}>
 						{answer}
 					</div>

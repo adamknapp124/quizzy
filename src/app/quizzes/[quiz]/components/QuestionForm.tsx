@@ -1,10 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+
+import { useAuth } from '@/app/AuthContext';
+import clsx from 'clsx';
+
+import SubmitButton from '@/app/components/buttons/SubmitButton';
+
 import RadioInputs from './RadioInputs';
-import SubmitButton from '@/app/components/SubmitButton';
 import Scoreboard from './Scoreboard';
-import Title from './Title';
 
 interface QuestionFormProps {
 	questions: {
@@ -19,14 +23,15 @@ export default function QuestionForm({ questions, title }: QuestionFormProps) {
 	const [score, setScore] = useState(0);
 	const [index, setIndex] = useState(0);
 	const [selectedAnswer, setSelectedAnswer] = useState('');
-	const user = 'username';
+	const { user } = useAuth();
 	const [quizLength, setQuizLength] = useState(questions.length);
 	const question = questions[index]?.question || '';
 	const correctAnswer = questions[index]?.answer || '';
 	const generatedAnswers = questions[index]?.generatedAnswers || [];
 
-	console.log('title: ', title);
-	console.log('selectedAnswer', selectedAnswer);
+	console.log('titlesdfsdf: ', title);
+	console.log('selectedAnswersdfsdf', selectedAnswer);
+	console.log('questionsdfsdf', question);
 
 	const handleSubmit = () => {
 		if (selectedAnswer === correctAnswer) {
@@ -44,34 +49,42 @@ export default function QuestionForm({ questions, title }: QuestionFormProps) {
 	};
 
 	return (
-		<div className='bg-navBackground p-2 rounded-lg min-w-[700px]'>
-			<div className='flex rounded-lg p-2 flex-col bg-white'>
-				<div className='font-quiz text-5xl my-2 m-auto'>{question}</div>
-				<div className='rounded-lg'>
-					{quizLength > 0 ? (
-						<div className='flex flex-col gap-2'>
-							<RadioInputs
-								question={question}
-								correctAnswer={correctAnswer}
-								setSelectedAnswer={setSelectedAnswer}
-								selectedAnswer={selectedAnswer}
-								generatedAnswers={generatedAnswers}
+		<div className='bg-shadow p-2 rounded-lg w-full max-w-[700px]'>
+			<div className='bg-black p-2 rounded-lg'>
+				<div className='flex rounded-lg p-2 flex-col bg-white gap-5'>
+					<div className='font-quiz font-bold text-xl my-2 m-auto'>
+						<div className='bg-white'>{question}</div>
+					</div>
+					<div className='rounded-lg'>
+						{quizLength > 0 ? (
+							<div className='flex flex-col gap-2'>
+								<RadioInputs
+									question={question}
+									correctAnswer={correctAnswer}
+									setSelectedAnswer={setSelectedAnswer}
+									selectedAnswer={selectedAnswer}
+									generatedAnswers={generatedAnswers}
+								/>
+								<SubmitButton
+									classes={clsx(`rounded-lg font-quiz text-xl font-bold w-full flex 
+                    justify-center items-center col-span-1 tracking-widest transition 
+                    duration-500 border-2 border-transparent-600 p-5 cursor-pointer 
+                    text-center transition duration-200 hover:bg-sky-600 hover:text-white`)}
+									type='button'
+									onClick={handleSubmit}
+									disabled={selectedAnswer === ''}
+									name={'Submit'}
+									selectedAnswer={selectedAnswer}
+								/>
+							</div>
+						) : (
+							<Scoreboard
+								score={score}
+								quiz={title}
+								user={user.displayName}
 							/>
-							<button
-								className='w-full py-3 bg-yellow-600 text-white rounded-lg font-bold tracking-wide text-xl hover:bg-slate-900'
-								type='button'
-								onClick={handleSubmit}
-								disabled={selectedAnswer === ''}>
-								Submit
-							</button>
-						</div>
-					) : (
-						<Scoreboard
-							score={score}
-							quiz={title}
-							user={user}
-						/>
-					)}
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

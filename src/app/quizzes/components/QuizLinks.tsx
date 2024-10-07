@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 
 import QuizLink from '@/app/components/QuizLink';
-import CustomButton from '@/app/components/CustomButton';
 
 interface Quiz {
 	question: string;
@@ -13,13 +12,22 @@ interface Quiz {
 	generated_answers: string;
 }
 
-export default function QuizLinks({ quizzes }: { quizzes: Quiz[] }) {
+interface QuizLinksProps {
+	quizzes: Quiz[];
+	onQuizSelect: (quiz: string) => void;
+	selectedQuiz: string;
+}
+
+export default function QuizLinks({
+	quizzes,
+	onQuizSelect,
+	selectedQuiz,
+}: QuizLinksProps) {
 	const uniqueQuizzes = getUniqueQuizTitles(quizzes);
-	const [selectedQuiz, setSelectedQuiz] = useState('');
 
 	const handleClick = (quiz: string) => {
 		console.log(quiz);
-		setSelectedQuiz(quiz);
+		onQuizSelect(quiz);
 	};
 
 	function getUniqueQuizTitles(quizList: Quiz[]) {
@@ -50,19 +58,6 @@ export default function QuizLinks({ quizzes }: { quizzes: Quiz[] }) {
 						/>
 					</div>
 				))}
-			</div>
-			<div className='gap-2 hidden md:flex w-4/5 m-auto py-2 max-w-[900px]'>
-				<CustomButton
-					name='+ Create Quiz'
-					classes='bg-white border-2 border-border text-black font-bold 
-                    hover:bg-border hover:text-white'
-				/>
-				<CustomButton
-					name='Begin Quiz'
-					classes='bg-white border-2 border-border text-black font-bold 
-                    hover:bg-border hover:text-white'
-					href={selectedQuiz}
-				/>
 			</div>
 		</div>
 	);

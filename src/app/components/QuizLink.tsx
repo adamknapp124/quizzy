@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 import clsx from 'clsx';
 
@@ -11,23 +12,43 @@ interface QuizLinkProps {
 }
 
 export default function QuizLink({ name, link, selectedQuiz }: QuizLinkProps) {
+	const router = useRouter();
 	useEffect(() => {}, [selectedQuiz]);
 	return (
-		<div
-			className={clsx(
-				`bg-[#C4C0B5] hover:bg-border p-1 rounded-lg`,
-				selectedQuiz === link ? 'bg-border text-white' : null
-			)}>
+		<>
 			<div
 				className={clsx(
-					`h-[100px] bg-border rounded-lg text-white font-quiz w-full flex 
-                    justify-center items-center col-span-1 tracking-widest transition 
-                    duration-500 border-2 border-transparent hover:border-border 
-                    hover:border p-5 cursor-pointer text-center`,
-					selectedQuiz === link ? 'bg-navBackground text-white' : null
+					`bg-white hover:bg-sky-600 p-1 rounded-lg duration-200 transition-all hidden md:block`,
+					selectedQuiz === link ? 'bg-sky-600' : null
 				)}>
-				{name}
+				<div
+					className={clsx(
+						`h-[100px] rounded-lg font-quiz text-lg font-bold w-full flex 
+                    justify-center items-center col-span-1 tracking-widest transition 
+                    duration-500 border-2 border-transparent p-5 cursor-pointer 
+                    text-center transition duration-200 hover:bg-sky-600 hover:text-white`,
+						selectedQuiz === link ? 'bg-sky-600' : null,
+						selectedQuiz !== link ? 'bg-sky-300 text-black font-bold' : null
+					)}>
+					{name}
+				</div>
 			</div>
-		</div>
+			<div
+				className={clsx(
+					`bg-white p-1 rounded-lg duration-200 transition-all block md:hidden`,
+					selectedQuiz === link ? 'bg-sky-600 hover:bg-sky-500' : null
+				)}>
+				<button
+					className={clsx(
+						`h-[100px] bg-sky-300 rounded-lg text-white font-quiz w-full flex 
+                    justify-center items-center col-span-1 tracking-widest transition 
+                    duration-500 border-2 border-transparent hover:border-indigo-200
+                    hover:border p-5 cursor-pointer text-center transition duration-200`
+					)}
+					onClick={() => router.push(`/quizzes/${link}`)}>
+					{name}
+				</button>
+			</div>
+		</>
 	);
 }

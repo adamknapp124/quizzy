@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { createFormAction } from '@/app/actions/createFormAction';
 import Input from '../components/Input';
-import CustomButton from '@/app/components/CustomButton';
+import ActionButton from '@/app/components/buttons/ActionButton';
+
+import clsx from 'clsx';
 
 export default function CreateForm() {
 	const [extraQuestions, setExtraQuestions] = useState<number>(0);
@@ -55,7 +57,7 @@ export default function CreateForm() {
 	useEffect(() => {}, [extraQuestions]);
 
 	return (
-		<div className='w-full h-screen m-auto items-center justify-between flex flex-col gap-2 max-w-[1100px]'>
+		<div className='w-full h-screen m-auto items-center justify-between flex flex-col max-w-[1100px]'>
 			<div className='h-full w-full px-2'>
 				<form
 					onSubmit={handleSubmit}
@@ -64,57 +66,55 @@ export default function CreateForm() {
 						id='Title'
 						type='text'
 						required={true}
-						placeholder='Name the quiz'
+						placeholder='Name'
 						value={formValues.Title}
 						onChange={handleChange}
 						disabled={extraQuestions > 0}
+						classes='hover:bg-sky-300'
 					/>
-
 					<Input
 						id='Subject'
 						type='text'
 						required={true}
-						placeholder='What class is this for?'
+						placeholder='Subject'
 						value={formValues.Subject}
 						onChange={handleChange}
 						disabled={extraQuestions > 0}
+						classes='hover:bg-sky-300'
 					/>
-
 					<Input
 						id='Question'
 						type='text'
 						required={true}
-						placeholder='Write your quiz question here'
+						placeholder='Question'
 						value={formValues.Question}
 						onChange={handleChange}
+						classes='hover:bg-sky-300'
 					/>
-
 					<Input
 						id='Answer'
 						type='text'
 						required={true}
-						placeholder="What's the correct answer?"
+						placeholder='Answer'
 						value={formValues.Answer}
 						onChange={handleChange}
+						classes='hover:bg-sky-300'
 					/>
-
-					<hr className='m-2' />
-
 					<div className='flex flex-col justify-between p-2 gap-2'>
-						<CustomButton
-							classes='px-8 py-3 rounded-lg bg-white border border-navBackground text-black flex items-center justify-center text-xl'
+						<ActionButton
+							classes='rounded-lg bg-white border border-transparent hover:border-sky-600 shadow-xl text-black flex items-center justify-center text-xl'
 							onClick={handleReset}
 							name='Reset'
 							type='reset'
 						/>
-						<CustomButton
+						<ActionButton
 							name={
 								extraQuestions === 0
 									? 'Create'
 									: 'Add Question to Current Quiz'
 							}
 							type='submit'
-							classes='bg-navBackground text-white font-extrabold text-xl'
+							classes='bg-sky-600 hover:border-white shadow-xl border border-transparent text-white font-extrabold text-xl'
 						/>
 					</div>
 				</form>

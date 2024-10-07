@@ -14,6 +14,7 @@ const config: Config = {
 				background: '#F6EFE5',
 				hover: '#271D20',
 				border: '#774C3A',
+				shadow: '#C4C0B5',
 			},
 			fontFamily: {
 				header: ['Permanent Marker'],
