@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quizzy - the AI powered self testing application
+Quizzy is a web application designed to help users create, customize, and take quizzes on a variety of topics. Users can easily build interactive quizzes by adding questions, setting answer choices, and determining correct answers. The application supports quiz-takers with real-time feedback and scoring, making it a useful tool for educators, students, or anyone looking to test their knowledge. It can also serve as a platform for creating study aids or engaging in fun trivia challenges with friends.
 
-## Getting Started
+## Features
+### Create Custom Quizzes
+Users can create a quiz about any subject. You need only to supply the questions and correct answer, AI will handle the rest by filling in incorrect, but close answers to turn any question into multiple choice.
 
-First, run the development server:
+https://github.com/user-attachments/assets/2e6cc7bc-8219-46b6-b3fa-c8ec38ae599a
+https://github.com/user-attachments/assets/2cba5b25-ff4f-4b6a-a0de-7c714aafb397
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Quiz yourself
+Test your knowledge by taking the quizzes that you, or other people have created
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://github.com/user-attachments/assets/78c469a6-1840-451b-8a61-173317ddb8aa
+https://github.com/user-attachments/assets/b1e43ad5-0260-4b1c-b484-8e745334dd33
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Edit quizzes
+Make a mistake? You can edit the quizzes that you created, add question, remove questions, just fix typos, or adjust the correct answer.
+### Fully Responsive
+Fully optimized for screens of all sizes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+https://github.com/user-attachments/assets/d28ea2d9-11e1-43db-b4ff-3dd977dc2add
+https://github.com/user-attachments/assets/1681ba87-962d-434e-afac-d85b6b481713
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Features
+- In the future I would like to add the ability to create an entire quiz of the users specified amount of questions, just by specifying the grade level and subject the quiz should be about.
+- As the quizzes created by any user are available to any user, you can filter them to only see quizzes you create, but a leaderboard for time/scares will be my next feature
